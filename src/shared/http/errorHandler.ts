@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import AppError from '@shared/errors/AppError';
+import { AppError } from '@shared/errors/AppError';
 
 export default function (
   error: Error,
@@ -16,6 +16,6 @@ export default function (
 
   return response.status(500).json({
     status: 'error',
-    message: 'Internal server error',
+    message: 'Internal server error: ' + error.message,
   });
 }
